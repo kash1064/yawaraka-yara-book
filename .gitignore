@@ -1,0 +1,10 @@
+peda*
+yaramaster/*.obj
+yaramaster/*.lst
+yaramaster/*.dump
+yaramaster/*.exe
+yaramaster/*.pdf
+yaramaster/test*
+yaramaster/.viminfo
+yaramaster/.python_history
+yaramaster/.bash_history
