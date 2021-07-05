@@ -49,6 +49,7 @@ YARA_RULE_COMPILED := 02_option_test.yarc  02_sample_A.yarc  02_sample_B.yarc  0
 	${MINGW} ${MFLAG} $< -o $@ 
 
 all_compile: ${OBJ_FILES} ${OBJ_DUMP_FILES} ${ASM_OBJECTS} ${BIN_FILES} ${YARA_RULE_COMPILED} ${EXE_FILES}
+	make module
 
 clear_all_outputs:
 	-find . -name "*.lst" -exec rm {} \;
@@ -58,25 +59,3 @@ clear_all_outputs:
 	-find . -name "*.dump" -exec rm {} \;
 	-find . -name "*.yarc" -exec rm {} \;
 	-find . -name "*.exe" -exec rm {} \;
-
-test:
-	make clear_all_outputs
-	make all_compile
-
-module:
-	cp sample_module/04_dict_module.c /yara-4.1.0/libyara/modules
-	cp sample_module/05_sample_module.c /yara-4.1.0/libyara/modules
-	echo "MODULE(my_dict)" >> \
-		/yara-4.1.0/libyara/modules/module_list
-	echo "MODULES += modules/04_dict_module.c" >> \
-		/yara-4.1.0/libyara/Makefile.am
-
-	# echo "MODULE(sample_module)" >> \
-	# 	/yara-4.1.0/libyara/modules/module_list
-	# echo "MODULES += modules/05_sample_module.c" >> \
-	# 	/yara-4.1.0/libyara/Makefile.am
-
-	cd /yara-4.1.0; make; make install
-
-	echo "/usr/local/lib" >> /etc/ld.so.conf
-	ldconfig
