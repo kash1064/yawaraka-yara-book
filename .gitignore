@@ -4,6 +4,10 @@ yaramaster/*.lst
 yaramaster/*.dump
 yaramaster/*.exe
 yaramaster/*.pdf
+yaramaster/sample_source/*.o
+yaramaster/sample_lst/*.lst
+yaramaster/sample_dump/*.dump
+yaramaster/yararule_compiled/*.yarc
 yaramaster/test*
 yaramaster/.viminfo
 yaramaster/.python_history
