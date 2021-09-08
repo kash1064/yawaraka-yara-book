@@ -6,9 +6,9 @@ rule_file_path = "{}/{}".format(YARA_RULE_DIR, "02_strings_and_condition.yar")
 
 # Callback関数を定義
 def scan_callback(data):
+    print("===========")
     print(type(data))
     pprint.pprint(data)
-    
     return yara.CALLBACK_CONTINUE
 
 # YARAルールのコンパイル
